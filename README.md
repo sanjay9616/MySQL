@@ -181,6 +181,130 @@ WHERE condition
 | LIKE     | Search for a pattern                             |
 | IN       | To specify multiple possible values for a column |
 
+**Examples**
+
+```sql
+USE student;
+SELECT * FROM student.personal;
+```
+```sql
+USE student;
+SELECT * FROM personal;
+```
+```sql
+USE student;
+SELECT roll_no,name FROM personal;
+```
+```sql
+USE student;
+SELECT roll_no AS SN,name AS NAME FROM personal;
+```
+```sql
+USE student;
+SELECT roll_no AS SN,name AS "Student Name" FROM personal;
+```
+```sql
+USE student;
+SELECT * FROM personal
+WHERE
+roll_no=3;
+```
+```sql
+USE student;
+SELECT roll_no,name FROM personal
+WHERE
+roll_no=3;
+```
+
+<h2>SELECT with AND & OR Operator</h2>
+
+```sql
+SELECT column1, column2, column3, ....
+FROM table_name
+WHERE condition1 AND condition2 AND condition3....;
+```
+```sql
+SELECT column1, column2, column3, ....
+FROM table_name
+WHERE condition1 OR condition2 OR condition3....;
+```
+**Example**
+
+```sql
+use student;
+SELECT * FROM personal
+WHERE age>=20 AND age<=25 AND (address="delhi" OR address="Agra");
+```
+```sql
+use student;
+SELECT * FROM personal
+WHERE age>=20 AND age<=25 AND NOT (address="delhi" OR address="Agra");
+```
+
+<h2>SELECT with IN Operator</h2>
+
+```sql
+SELECT column1, column2, column3, ....
+FROM table_name
+WHERE column_name IN (value1, valu2, ...);
+```
+```sql
+SELECT column1, column2, column3, ....
+FROM table_name
+WHERE column_name NOT IN (value1, valu2, ...);
+```
+**Example**
+
+```sql
+use student;
+SELECT * FROM personal
+WHERE age IN (20,21,22,23,24,25);
+```
+```sql
+use student;
+SELECT * FROM personal
+WHERE age NOT IN (20,21,22,23,24,25);
+```
+
+<h2>SELECT with BETWEEN Operator</h2>
+
+```sql
+SELECT column1, column2, column3, ...
+FROM table_name
+WHERE column_name BETWEEN value1 AND value2;
+```
+```sql
+SELECT column1, column2, column3, ...
+FROM table_name
+WHERE column_name NOT BETWEEN value1 AND value2;
+```
+**Example**
+
+```sql
+use student;
+SELECT * FROM personal
+WHERE age BETWEEN 20 AND 25;
+```
+```sql
+use student;
+SELECT * FROM personal
+WHERE age NOT BETWEEN 20 AND 25;
+```
+```sql
+use student;
+SELECT * FROM personal
+WHERE name BETWEEN "Ketan" AND "Umang";
+-- Search only  between “K” and “U”
+```
+```sql
+use student;
+SELECT * FROM personal
+WHERE name NOT BETWEEN "Ketan" AND "Umang";
+```
+
+
+
+
 
 
 
