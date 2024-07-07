@@ -137,7 +137,7 @@ VALUES
 
 <h2>Constrains in MySQL</h2>
 
-used to specify the rule that allows what values will be stored in the table
+Constrains in MySQL used to specify the rule that allows what values will be stored in the table
 
 1. NOT NULL
 2. UNIQUE
@@ -145,6 +145,43 @@ used to specify the rule that allows what values will be stored in the table
 4. CHECK
 5. PRIMARY KEY
 6. FOREIGN KEY
+
+```sql
+USE student;
+
+CREATE TABLE student1(
+    id INT NOT NULL UNIQUE,
+    name VARCHAR(20) NOT NULL,
+    age INT NOT NULL CHECK (age>=18),
+    gender VARCHAR(10) NOT NULL,
+    phone VARCHAR(12) NOT NULL UNIQUE,
+    city VARCHAR(30) NOT NULL DEFAULT 'Agra'
+);
+```
+
+<h2>SELECT with WHERE Clause</h2>
+
+```sql
+SELECT column1, column2, column3, ...
+FROM table_name
+WHERE condition
+```
+
+<h2>WHERE Comparision Operator</h2>
+
+| Operator | Description                                      |
+| -------- | ------------------------------------------------ |
+| =        | Equal                                            |
+| >        | Greater Than                                     |
+| <>       | Less Than                                        |
+| >=       | Greater Than or Equal                            |
+| <=       | Les Than or EQUAL                                |
+| <> OR != | Not Equal                                        |
+| BETWEEN  | Between a certain range                          |
+| LIKE     | Search for a pattern                             |
+| IN       | To specify multiple possible values for a column |
+
+
 
 
 
