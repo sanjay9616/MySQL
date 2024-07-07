@@ -302,6 +302,46 @@ SELECT * FROM personal
 WHERE name NOT BETWEEN "Ketan" AND "Umang";
 ```
 
+<h2>LIKE Operator with Wildcard Patterns</h2>
+
+| Pattern     | Description                                     |
+| ----------- | ----------------------------------------------- |
+| LIKE 'a%'   | Start with "a"                                  |
+| LIKE '%a'   | End with "a"                                    |
+| LIKE '%am%' | Have "am" in any position                       |
+| LIKE 'a%m'  | Start with "a" and Ends with "m"                |
+| LIKE '_a%'  | "a" in the second position                      |
+| LIKE '__a%' | "a" in the third position                       |
+| LIKE '_oy%' | "o" in the second and "y" in the third position |
+
+**Examles**
+
+```sql
+-- patterns are Case sensitive
+use student;
+SELECT * FROM personal
+WHERE name LIKE "s%";
+```
+```sql
+use student;
+SELECT * FROM personal
+WHERE name LIKE "_h%";
+-- Also we can use NOT LIKE
+-- If you use BINARY after WHERE and before col_name then upper or lower does not matter
+```
+
+<h2>Regular Expressions Patterns with Descriptions</h2>
+
+| Sign                     | Pattern                          | Description                                                  |
+| ------------------------ | -------------------------------- | ------------------------------------------------------------ |
+| ^                        | '^ra'                            | Beginning of string                                          |
+| $                        | '^an$'                           | End of string                                                |
+| [...]                    | '[rms]'                          | Any character listed between the square brackets             |
+| ^[...]                   | '[^rms]'                         | Begins with any character listed between the square brackets |
+| [a-z]                    | '[a-h]e'                         | Match with in the range                                      |
+| p1&#124;p2&#124;p3&#124; | 'tom&#124;dick&#124;harry&#124;' | Match any of the patterns p1, p2 or p3                       |
+
+
 
 
 
