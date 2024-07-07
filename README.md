@@ -108,4 +108,44 @@ SELECT * FROM student.personal;
 | -------- | ----------- | ---------- | ------ | ---------- |
 | 4        | Ketan Mehta | 2021-09-22 | M      | 7855xxxxxx |
 
+<h2>Insert Multiple Rows Into Table</h2>
+
+```sql
+INSERT INTO table_name(columns1, column2, ...)
+VALUES
+(value1, value2, ...),
+(value1, value2, ...),
+(value1, value2, ...);
+```
+```sql
+USE student;
+INSERT INTO personal(roll_no,name,gender,phone_no,DOB)
+VALUES
+(1,"Mohit Yadav","M","9000xxxxxx","2010-09-21"),
+(2,"Ketan Mehta","M","9600xxxxxx","1998-09-11"),
+(3,"Vanshika","F","8800xxxxxx","2000-09-07"),
+(4,"Mohini","F","7800xxxxxx","2002-09-09");
+```
+**Output**
+
+| roll_no. | name        | DOB        | gender | phone_no   |
+| -------- | ----------- | ---------- | ------ | ---------- |
+| 1        | Mohit Yadav | 2010-09-21 | M      | 9000xxxxxx |
+| 2        | Ketan Mehta | 1998-09-11 | M      | 9600xxxxxx |
+| 3        | Vanshika    | 2000-09-07 | F      | 8800xxxxxx |
+| 4        | Mohini      | 2002-09-09 | F      | 7800xxxxxx |
+
+<h2>Constrains in MySQL</h2>
+
+used to specify the rule that allows what values will be stored in the table
+
+1. NOT NULL
+2. UNIQUE
+3. DEFAULT
+4. CHECK
+5. PRIMARY KEY
+6. FOREIGN KEY
+
+
+
 
