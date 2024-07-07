@@ -63,3 +63,49 @@ CREATE TABLE table_name (
 4. TIME(fsp) hh:mm:ss
 5. YEAR four-digit-format: 1901
 
+<h2>Create Database & Table</h2>
+
+```sql
+CREATE DATABASE student;
+```
+```sql
+use student;
+CREATE TABLE personal(
+    roll_no INT,
+    name VARCHAR(50),
+    phone_no VARCHAR(12),
+    gender VARCHAR(1),
+    DOB DATE
+
+);
+```
+```sql
+CREATE TABLE Product(
+    Pid INT,
+    Pname VARCHAR(50),
+    Pcompany VARCHAR(12),
+    Price INT
+);
+```
+
+<h2>How to Insert data in Tables with SQL</h2>
+
+```sql
+INSERT INTO table_name (column1, column2, ...)
+VALUES (value1, value2, ...)
+```
+
+```sql
+use student;
+INSERT INTO personal(roll_no,name,DOB,gender,phone_no)
+VALUES(4,"Ketan Mehta","2021-09-22","M","7855xxxxxx");
+
+SELECT * FROM student.personal;
+```
+**Output**
+
+| roll_no. | name        | DOB        | gender | phone_no   |
+| -------- | ----------- | ---------- | ------ | ---------- |
+| 4        | Ketan Mehta | 2021-09-22 | M      | 7855xxxxxx |
+
+
