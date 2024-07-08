@@ -578,6 +578,172 @@ SELECT AVG(DISTINCT salary) FROM Employee; --Output: 88857.1429
 SELECT COUNT(id) AS TotalRecords FROM Employee;
 ```
 
+<h2>How to Update data in Tables</h2>
+
+```sql
+UPDATE table_name
+SET column_name1 = value1, column_name2 = value2, ...
+WHERE condition
+```
+**Example**
+
+```sql
+USE student;
+UPDATE Employee
+SET name="Anu Chaudhary" WHERE id=7;
+```
+```sql
+USE student;
+UPDATE Employee
+SET age=20,salary=45000 WHERE id=7;
+```
+```sql
+USE student;
+UPDATE Employee
+SET age=18 WHERE id IN (2,3);
+```
+
+<h2>How to DELETE data in Tables</h2>
+
+```sql
+DELETE FROM table_name
+WHERE condition;
+```
+**Example**
+
+```sql
+USE student;
+DELETE FROM Employee WHERE id=8;
+```
+
+<h2>How to Rollback your work in MySQL<h2>
+
+**ROLLBACK**:- Cancels all modifications, which modified after COMMIT operation, it only modifies `Insert`, `Update` and `Delete` operation (which modifies after COMMIT).
+
+**COMMIT**:- Save previous transection permanently
+
+```sql
+use student;
+UPDATE Employee SET name="Shivani" WHERE id=2; -- -- It will not be ROLLBACK
+COMMIT;
+UPDATE Employee SET name="Sonal" WHERE id=2; -- It will be ROLLBACK
+ROLLBACK;
+SELECT * FROM Employee;
+```
+
+<h2>What is PRIMARY KEY Constrains</h2>
+
+`Primary key is key which is uniquely identify each records in a table, and it cannot have null value`
+
+- Primary Key always has unique data.
+- A Primary Key cannot have null value.
+- A Table contain only one Primary Key constrains.
+
+<h2>Create table with PRIMARY KEY Syntax</h2>
+
+```sql
+CREATE TABLE table_name (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    age INT NOT NULL,
+    city VARCHAR(10) NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY(city) REFERENCES City (cid)
+);
+```
+
+<h2>ALTER Table with FOREIGN KEY Syntax</h2>
+
+```sql
+ALTER TABLE table_name
+ADD FOREIGN KEY (city) REFERENCES City (cid);
+```
+
+**Examples**
+
+```sql
+USE student;
+CREATE TABLE City(
+    cid INT NOT NULL AUTO_INCREMENT,
+    cname VARCHAR(20) NOT NULL,
+    PRIMARY KEY (cid)
+);
+```
+```sql
+USE student;
+INSERT INTO City(cname)
+VALUES
+('Agra'),
+('Bhopal'),
+('Noida'),
+('Delhi'),
+('Jaipur');
+```
+
+```sql
+USE student;
+CREATE TABLE Personal(
+    id INT NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    percentage INT NOT NULL,
+    age INT NOT NULL,
+    gender VARCHAR(1) NOT NULL,
+    city INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (city) REFERENCES City (cid)
+);
+```
+```sql
+USE student;
+INSERT INTO Personal(id,name,percentage,age,gender,city)
+VALUES
+(1,"Ram Kumar",45,19,"M",1),
+(2,"Sarita Kumari",55,22,"F",2),
+(3,"Salman Khan",62,20,"M",1),
+(4,"Juhi Chawla",47,18,"F",3),
+(5,"Anil Kapoor",74,22,"M",1),
+(6,"John Abraham",64,21,"M",2),
+(7,"Shahid Kapoor",52,20,"M",1);
+```
+
+<h2>Types of Joins in MySQL</h2>
+
+1. INNER JOIN
+2. LEFT JOIN
+3. RIGHT JOIN
+4. CROSS JOIN
+
+<h2>What is INNER JOIN</h2>
+
+- The INNER JOIN selects records that have matching values in both tables.
+- **Note**: We can simply write JOIN
+
+```sql
+SELECT columns
+FROM Table1
+INNER JOIN table2
+ON table1.column_name(foreign_key) = table2.column_name(primary_key)
+```
+```sql
+USE student;
+SELECT * FROM Personal INNER JOIN city
+ON personal.city=city.cid;
+
+-- OR
+
+USE student;
+SELECT * FROM Personal p INNER JOIN city c
+ON p.city=c.cid;
+
+USE student;
+SELECT p.id,p.name,p.percentage,p.age,p.gender,c.cname FROM Personal p INNER JOIN city c
+ON p.city=c.cid;
+```
+
+<h2>What is LEFT JOIN</h2>
+
+- The LEFT JOIN returns all records from the left table (table1), and the matched records from the right table (table2)
+
 
 
 
