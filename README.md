@@ -341,6 +341,244 @@ WHERE name LIKE "_h%";
 | [a-z]                    | '[a-h]e'                         | Match with in the range                                      |
 | p1&#124;p2&#124;p3&#124; | 'tom&#124;dick&#124;harry&#124;' | Match any of the patterns p1, p2 or p3                       |
 
+```sql
+SELECT column1, column2, column3, ...
+FROM table_name
+WHERE column_name REGEXP pattern;
+```
+```sql
+-- Search name starting from ‘sh’
+USE student;
+SELECT * FROM personal WHERE name REGEXP '^sh';
+```
+```sql
+-- Search name which contains ‘sh’
+USE student;
+SELECT * FROM personal WHERE name REGEXP 'sh';
+```
+```sql
+-- Search name which contains ‘ar’ at the end
+USE student;
+SELECT * FROM personal WHERE name REGEXP 'ar$';
+```
+```sql
+-- Seacrh name which matches any of ‘Kumar’,’Awasthi’,’Mehta’
+USE student;
+SELECT * FROM personal WHERE name REGEXP 'Kumar|Awasthi|Mehta';
+```
+```sql
+-- Search name contains ‘Sanjay’ at starts OR ‘Awasthi’ at end OR contain ‘Mehta’
+USE student;
+SELECT * FROM personal WHERE name REGEXP '^Sanjay|Awasthi$|Mehta';
+```
+```sql
+-- Search name which contains  ‘I’ character OR contains ‘s’ character OR contains ‘is’
+USE student;
+SELECT * FROM personal WHERE name REGEXP '[is]';
+```
+```sql
+-- Search name which contains ‘iv’ OR ‘sv’
+USE student;
+SELECT * FROM personal WHERE name REGEXP '[is]v';
+```
+```sql
+-- Search name which starts from ‘m’ OR starts ‘s’
+USE student;
+SELECT * FROM personal WHERE name REGEXP '^[ms]';
+```
+```sql
+-- Search name which ends with ‘I’ OR ‘r’
+USE student;
+SELECT * FROM personal WHERE name REGEXP '[ir]$';
+```
+```sql
+-- Search name which contains in range ‘a’ to ‘j’ and suffix ‘r’
+USE student;
+SELECT * FROM personal WHERE name REGEXP '[a-j]r';
+```
+
+<h2>SELECT with ORDER BY</h2>
+
+```sql
+SELECT column1, column2, column3, ...
+FROM table_name
+ORDER BY column1, column2, ... ASC | DESC
+```
+**Example**
+
+```sql
+USE student;
+SELECT * FROM personal ORDER BY name ASC;
+```
+```sql
+USE student;
+SELECT * FROM personal ORDER BY name DESC;
+```
+```sql
+USE student;
+SELECT * FROM personal WHERE gender="M" ORDER BY name DESC;
+```
+```sql
+-- Sort name in ascending order
+USE student;
+SELECT * FROM personal ORDER BY name;
+```
+```sql
+-- Sort by name if name same then it compare to age and sorts by age
+USE student;
+SELECT * FROM personal ORDER BY name, age;
+```
+
+<h2>SELECT Data with DISTINCT</h2>
+
+```sql
+SELECT DISTINCT column1, column2, ...
+FROM table_name;
+```
+**Example**
+
+```sql
+USE student;
+SELECT DISTINCT age FROM personal;
+```
+```sql
+USE student;
+SELECT DISTINCT name,age FROM personal;
+```
+```sql
+USE student;
+SELECT DISTINCT age FROM personal ORDER BY age;
+```
+
+<h2>SELECT Data with IS NULL</h2>
+
+```sql
+SELECT column1, column2, column3, ...
+FROM table_name
+WHERE column IS NULL;
+```
+```sql
+SELECT column1, column2, column3, ...
+FROM table_name
+WHERE column IS NOT NULL;
+```
+**Example**
+
+```sql
+USE student;
+SELECT * FROM personal WHERE gender IS NULL;
+```
+```sql
+USE student;
+SELECT * FROM personal WHERE gender IS NOT NULL;
+```
+
+<h2>SELECT Data with LIMIT</h2>
+
+```sql
+SELECT column1, column2, column3, ...
+FROM table table_name
+WHERE condition
+LIMIT number;
+```
+**Example**
+
+```sql
+USE student;
+SELECT * FROM personal LIMIT 3;
+```
+```sql
+USE student;
+SELECT * FROM personal
+WHERE gender="M" ORDER BY name LIMIT 3;
+```
+
+<h2>SELECT Data with LIMIT & OFFSET</h2>
+
+```sql
+SELECT column1, column2, column3, ...
+FROM table_name
+WHERE condition
+LIMIT offset, number;
+```
+**Example**
+
+```sql
+-- Starts from 3rd Row and return 4th 5th 6th
+USE student;
+SELECT * FROM personal LIMIT 3, 3;
+```
+
+<h2>Aggregate Functions</h2>
+
+Perform calculations on multiple values and return the result in a single value like the average of all values.
+
+```sql
+COUNT(column_name)
+MAX(column_name)
+MIN(column_name)
+SUM(column_name)
+AVG(column_name)
+```
+```sql
+SELECT COUNT(column_name)
+FROM table_name
+WHERE condition;
+```
+```sql
+SELECT SUM(column_name)
+FROM table_name
+WHERE condition;
+```
+```sql
+USE student;
+
+CREATE TABLE Employee(
+    id INT NOT NULL UNIQUE,
+    name VARCHAR(30),
+    age INT,
+    gender VARCHAR(1),
+    salary INT
+);
+
+INSERT INTO Employee(id,name,gender,age,salary)
+VALUES
+(1,"Sanjay Kumar","M",23,110000),
+(2,"Shivani Awasthi","F",20,100000),
+(3,"Shivank Varshney","M",22,90000),
+(4,"Mohit Yadav","M",21,95000),
+(5,"Ketan Mehta","M",24,95000),
+(6,"Priya Yadav","F",20,97000),
+(7,"Rekha Mehta","F",20,50000),
+(8,"Aliya Gupta","F",21,80000);
+```
+```sql
+USE student;
+
+SELECT COUNT(id) FROM Employee; --Output: 8 (Total nimber of record)
+
+SELECT COUNT(*) FROM Employee; --Output: 8 (Total nimber of record)
+
+SELECT COUNT(salary) FROM Employee; --Output: 8
+
+SELECT COUNT(DISTINCT salary) FROM Employee; --Output: 7
+
+SELECT SUM(salary) FROM Employee; --Output: 717000
+
+SELECT SUM(DISTINCT salary) FROM Employee; --Output: 622000
+
+SELECT MAX(salary) FROM Employee; --Output: 110000
+
+SELECT MIN(salary) FROM Employee; --Output: 50000
+
+SELECT AVG(salary) FROM Employee; --Output: 89625.0
+
+SELECT AVG(DISTINCT salary) FROM Employee; --Output: 88857.1429
+
+SELECT COUNT(id) AS TotalRecords FROM Employee;
+```
+
+
 
 
 
