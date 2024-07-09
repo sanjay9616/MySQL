@@ -616,7 +616,7 @@ USE student;
 DELETE FROM Employee WHERE id=8;
 ```
 
-<h2>How to Rollback your work in MySQL<h2>
+<h2>How to Rollback your work in MySQL</h2>
 
 **ROLLBACK**:- Cancels all modifications, which modified after COMMIT operation, it only modifies `Insert`, `Update` and `Delete` operation (which modifies after COMMIT).
 
