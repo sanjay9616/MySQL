@@ -778,6 +778,106 @@ personal.city=city.cid;
 ![3](https://github.com/sanjay9616/MySQL/assets/87460579/7807432b-24fa-4ea1-bf30-207adb352f68)
 ![4](https://github.com/sanjay9616/MySQL/assets/87460579/64caeec3-5a0d-4768-ae66-dc5696cbaa17)
 
+```sql
+SELECT columns
+FROM table1
+CROSS JOIN table2
+```
+```sql
+USE student;
+SELECT * FROM Employee CROSS JOIN City;
+```
+
+**Example**
+
+```sql
+CREATE DATABASE Schema1;
+
+USE Schema1;
+CREATE TABLE City(
+    cid INT NOT NULL AUTO_INCREMENT,
+    city VARCHAR(20),
+    PRIMARY KEY (cid)
+);
+INSERT INTO City(city)
+VALUES
+("Agra"),
+("Bhopal"),
+("Delhi"),
+("Noida");
+
+USE Schema1;
+CREATE TABLE Courses(
+    crid INT NOT NULL AUTO_INCREMENT,
+    course VARCHAR(20),
+    PRIMARY KEY (crid)
+);
+INSERT INTO Courses(course)
+VALUES
+("Btech"),
+("BCA"),
+("BBA");
+
+USE Schema1;
+CREATE TABLE Student(
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(20),
+    age INT,
+    course INT,
+    city INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (course) REFERENCES Courses (crid),
+    FOREIGN KEY (city) REFERENCES City(cid)
+);
+INSERT INTO Student(name,age,course,city)
+VALUES
+("Ram Kumar",19,1,1),
+("Salman Khan",18,3,2),
+("Meera Khan",19,1,1),
+("Sarita kumari",21,2,3);
+```
+
+<h2>JOIN Three Tables</h2>
+
+```sql
+SELECT columns
+FROM table1
+INNER JOIN table2
+ON table1.column_name = table2.column_name
+INNER JOIN table3
+ON table1.column_name = table_name3.column_name
+```
+```sql
+USE Schema1;
+SELECT * FROM Student
+INNER JOIN City
+ON Student.city=City.cid
+INNER JOIN Courses
+ON Student.course=Courses.crid;
+
+-- OR
+
+Or
+
+USE Schema1;
+SELECT * FROM Student s
+INNER JOIN City c
+ON s.city=c.cid
+INNER JOIN Courses cr
+ON s.course=cr.crid;
+```
+
+```sql
+USE Schema1;
+SELECT s.id,s.name,s.age,c.city,cr.course FROM Student s
+INNER JOIN City c
+ON s.course=c.cid
+INNER JOIN Courses cr
+on s.city=cr.crid;
+```
+
+<h2>GROUP BY Clause</h2>
+
 
 
 
