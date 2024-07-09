@@ -746,6 +746,20 @@ ON p.city=c.cid;
 
 ![1](https://github.com/sanjay9616/MySQL/assets/87460579/b3efd5da-25d2-46a6-afd3-bfea1251aad9)
 
+```sql
+SELECT columns
+FROM table1
+LEFT JOIN table2
+ON table1.column_name(foreign_key) = table2.column_name2(primary_key)
+```
+```sql
+SELECT * FROM personal
+LEFT JOIN city
+ON personal.city=city.cid;
+```
+
+<h2>What is RIGHT JOIN</h2>
+
 
 
 
