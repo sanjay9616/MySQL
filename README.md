@@ -762,6 +762,19 @@ ON personal.city=city.cid;
 
 ![2](https://github.com/sanjay9616/MySQL/assets/87460579/787d2e62-34ec-4310-866b-d8c1dfc5a061)
 
+```sql
+SELECT columns
+FROM table1
+RIGHT JOIN table2
+ON table1.column_name(foreign_key) = table2.column_name2(primary_key)
+```
+```sql
+SELECT * FROM personal RIGHT JOIN city ON
+personal.city=city.cid;
+```
+
+<h2>What is CROSS JOIN</h2>
+
 
 
 
