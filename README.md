@@ -775,9 +775,8 @@ personal.city=city.cid;
 
 <h2>What is CROSS JOIN</h2>
 
-
-
-
+![3](https://github.com/sanjay9616/MySQL/assets/87460579/7807432b-24fa-4ea1-bf30-207adb352f68)
+![4](https://github.com/sanjay9616/MySQL/assets/87460579/64caeec3-5a0d-4768-ae66-dc5696cbaa17)
 
 
 
