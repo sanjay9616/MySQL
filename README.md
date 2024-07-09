@@ -744,6 +744,7 @@ ON p.city=c.cid;
 
 - The LEFT JOIN returns all records from the left table (table1), and the matched records from the right table (table2)
 
+![1](https://github.com/sanjay9616/MySQL/assets/87460579/b3efd5da-25d2-46a6-afd3-bfea1251aad9)
 
 
 
