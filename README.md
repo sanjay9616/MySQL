@@ -760,6 +760,7 @@ ON personal.city=city.cid;
 
 <h2>What is RIGHT JOIN</h2>
 
+![2](https://github.com/sanjay9616/MySQL/assets/87460579/787d2e62-34ec-4310-866b-d8c1dfc5a061)
 
 
 
