@@ -1340,6 +1340,8 @@ RENAME Student;
 ```sql
 DROP TABLE table_name;
 TRUNCATE TABLE table_name;
+TRUNCATE table_name;
+DELETE FROM Employee WHERE e_id=3;
 ```
 
 <h2>What is Index</h2>
