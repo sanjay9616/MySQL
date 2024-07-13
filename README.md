@@ -878,7 +878,240 @@ on s.city=cr.crid;
 
 <h2>GROUP BY Clause</h2>
 
+The GROUP BY Clause is used in conjunction with the SELECT Statment and Aggregate functions to group rows togather common column values.
 
+```sql
+SELECT columns
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+```
+```sql
+SELECT columnc
+FROM table1 INNER JOIN table2
+ON table1.column_name = table2.column_name
+WHERE condition
+GROUP BY column_name(s);
+```
+**Examples**
 
+`Student Table`
 
+| id  | name          | age | course | city |
+| --- | ------------- | --- | ------ | ---- |
+| 1   | Ram Kumar     | 19  | 1      | 1    |
+| 2   | Salman Khan   | 18  | 3      | 2    |
+| 3   | Meera Khan    | 19  | 1      | 1    |
+| 4   | Sarita Kumari | 21  | 2      | 3    |
 
+```sql
+USE Schema1;
+SELECT city, COUNT(city)
+FROM Student
+GROUP BY city;
+```
+`Output`
+
+| city | COUNT(city) |
+| ---- | ----------- |
+| 1    | 2           |
+| 2    | 1           |
+| 3    | 1           |
+
+`city Table`
+
+| cid | city   |
+| --- | ------ |
+| 1   | Agra   |
+| 2   | Bhopal |
+| 3   | Delhi  |
+
+```sql
+USE Schema1;
+SELECT c.city, COUNT(s.city) FROM Student s
+INNER JOIN City c
+ON s.city=c.cid
+GROUP BY city;
+```
+`Output`
+
+| city   | COUNT(s.city) |
+| ------ | ------------- |
+| Agra   | 2             |
+| Bhopal | 1             |
+| Delhi  | 1             |
+
+<h2>GROUP BY with HAVING Clause</h2>
+
+```sql
+SELECT columns
+FROM table_name
+GROUP BY column_name(s)
+HAVING condition;
+```
+
+If we use WHERE then use it before GROUP BY else if use HAVING then use it after GROUP BY
+
+<h2>What is SubQuery or Nested Query</h2>
+
+```sql
+SELECT columns
+FROM table1
+WHERE
+column = (SELECT columns FROM table2 WHERE condition);
+```
+
+```sql
+USE Schema1;
+SELECT name FROM Student s
+WHERE s.course = (SELECT cr.crid FROM Courses cr WHERE cr.course = "Btech");
+```
+```sql
+USE Schema1;
+SELECT s.name FROM Student s
+WHERE s.course IN (SELECT cr.crid FROM Courses cr WHERE cr.course IN ("Btech","BBA"));
+```
+
+<h2>SELECT with EXISTS / NOT EXISTS Sytax</h2>
+
+If any single records exists then Parent commond show result.
+
+```sql
+SELECT columns
+FROM table1
+WHERE
+EXISTS (SELECT columns FROM table2 WHERE Condition);
+```
+```sql
+SELECT columns
+FROM table1
+WHERE
+NOT EXISTS (SELECT columns FROM table2 WHERE Condition);
+```
+
+<h2>What is UNION & UNION ALL</h2>
+
+```sql
+SELECT column1, column2 FROM table1
+UNION / UNION ALL
+SELECT coumn1, column2 FROM table2
+```
+
+- **UNION** - Removes duplicate rows from the combined result set, but **UNION ALL** does not removes duplicate rows from the combined result set
+- Each SELECT Statement within UNION must have the same number of columns
+- The columns must also have similar data types
+- The columns in each SELECT statetment must also be in same order
+
+```sql
+USE schema1;
+CREATE TABLE Lecturers(
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(20),
+    age INT,
+    city INT,
+    course INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (course) REFERENCES Courses (crid),
+    FOREIGN KEY (city) REFERENCES City(cid)
+);
+INSERT INTO Lecturers(name,age,city,course)
+VALUES("Raj Kapoor",37,1,2),
+("Raj Kapoor",39,2,3),
+("Sadhna",38,4,1),
+("Ram Kumar",45,3,2),
+("Nagma",42,2,1);
+SELECT * FROM Lecturers;
+```
+| id  | name       | age | city | course |
+| --- | ---------- | --- | ---- | ------ |
+| 1   | Raj Kapoor | 37  | 1    | 2      |
+| 2   | Raj Kapoor | 39  | 2    | 3      |
+| 3   | Sadhna     | 38  | 4    | 1      |
+| 4   | Ram Kumar  | 45  | 3    | 2      |
+| 5   | Nagma      | 45  | 2    | 1      |
+
+```sql
+USE Schema1;
+SELECT * FROM Student
+UNION
+SELECT * FROM Lecturers;
+```
+```sql
+USE Schema1;
+SELECT name FROM Student
+UNION
+SELECT name FROM Lecturers;
+```
+| name          |
+| ------------- |
+| Ram Kumar     |
+| Salman Khan   |
+| Meera Khan    |
+| Sarita Kumari |
+| Raj Kapoor    |
+| Sadhna        |
+| Nagma         |
+
+```sql
+USE Schema1;
+SELECT name FROM Student
+UNION ALL
+SELECT name FROM Lecturers;
+```
+| name          |
+| ------------- |
+| Ram Kumar     |
+| Salman Khan   |
+| Meera Khan    |
+| Sarita Kumari |
+| Raj Kapoor    |
+| Raj Kapoor    |
+| Sadhna        |
+| Ram Kumar     |
+| Nagma         |
+
+In the above example Ram Kumar & Raj Kapoor have duplicacy(UNION ALL)
+
+<h2>What is If Clause</h2>
+
+```sql
+USE Schema1;
+SELECT *, IF(percentage >=33,"PASS","FAIL") AS Res
+FROM result;
+```
+| id  | name         | percentage | Res  |
+| --- | ------------ | ---------- | ---- |
+| 1   | Sanjay Kumar | 98         | PASS |
+| 2   | Mohit Yadav  | 80         | PASS |
+| 3   | Somil        | 23         | FAIL |
+| 4   | Vinay        | 33         | PASS |
+
+<h2>What is Case Clause</h2>
+
+```sql
+USE Schema1;
+SELECT *,
+CASE
+    WHEN percentage <=100 AND percentage >80 THEN "1st"
+    WHEN percentage <=80 AND percentage >60 THEN "2nd"
+    WHEN percentage <=60 AND percentage >40 THEN "3rd"
+    WHEN percentage <=40 THEN "FAIL"
+    ELSE "Not Correct Data"
+END
+AS Grade
+FROM Result;
+```
+| id  | name         | percentage | Grade |
+| --- | ------------ | ---------- | ----- |
+| 1   | Sanjay Kumar | 98         | 1st   |
+| 2   | Mohit Yadav  | 80         | 2nd   |
+| 3   | Somil        | 23         | FAIL  |
+| 4   | Vinay        | 33         | PASS  |
+
+```sql
+UPDATE Result SET percentage= 
+CASE id 
+    WHEN 4 THEN 45 
+    WHEN 3 THEN 60 
+END WHERE id IN(3,4);
+```
