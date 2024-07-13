@@ -1193,3 +1193,6 @@ SELECT FORMAT(123.4567,2) AS Value1,FORMAT(123.4567,3) AS Value2;
 SELECT HEX("Sanjay Kumar"),HEX(10),HEX(15);
 ```
 
+![4](https://github.com/user-attachments/assets/abf09503-a3dd-4f3d-80b1-0026c630e740)
+
+
