@@ -1224,4 +1224,77 @@ SELECT ADDDATE("2019-09-12", INTERVAL 10 DAY),ADDDATE("2019-09-12", INTERVAL 2 M
 ```
 ![6](https://github.com/user-attachments/assets/766bc31b-49b7-4dd0-ae57-b4a3058fe3b4)
 
+```sql
+SELECT MAKEDATE(2019,7);
+
+SELECT SUBDATE("2019-09-12",INTERVAL 10 DAY); -- Same like ADDDATE but it subtracts
+
+SELECT DATEDIFF("2019-10-01","2020-10-01"),TO_DAYS("2000-01-01"),FROM_DAYS("730485"); -- Base Yar = 0
+
+SELECT DATE_FORMAT("2010-09-01","%d-%b-%y"); -- 01-Sep-10
+```
+
+<h2>Features of MySQL ALTER Command</h2>
+
+The ALTER command in MySQL is used to modify the structure of an existing database table. It allows you to perform various operations such as adding, modifying, or deleting columns, as well as adding or removing constraints.
+
+1. **Add Column**
+
+```sql
+ALTER TABLE table_name
+ADD column_name datatype;
+```
+1. **Modify Column**
+
+- Changing Data Type of a column
+
+```sql
+ALTER TABLE table_name
+MODIFY column_name datatype;
+```
+- Adding Constrains to a columns
+
+```sql
+ALTER TABLE table_name
+MODIFY column_name datatype NOT NULL;
+```
+
+3. **Delete Column / Drop Column**
+
+```sql
+ALTER TABLE table_name
+DROP COLUMN column_name datatype;
+```
+
+4. **Rename / Change Column Name**
+
+```sql
+ALTER TABLE table_name
+CHANGE column_name new_name datatype;
+```
+
+5. **Rename Table**
+
+```sql
+ALTER TABLE table_name
+RENAME new_table_name;
+```
+
+6. **Changing Column Position**
+
+```sql
+ALTER TABLE table_name
+MODIFY column_name column_type
+[AFTER other_column | FIRST];
+```
+
+```sql
+ALTER TABLE employees
+MODIFY email VARCHAR(255) FIRST;
+```
+```sql
+ALTER TABLE employees
+MODIFY email VARCHAR(255) AFTER last_name;
+```
+
 
