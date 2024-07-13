@@ -1244,7 +1244,7 @@ The ALTER command in MySQL is used to modify the structure of an existing databa
 ALTER TABLE table_name
 ADD column_name datatype;
 ```
-1. **Modify Column**
+2. **Modify Column**
 
 - Changing Data Type of a column
 
@@ -1297,4 +1297,50 @@ ALTER TABLE employees
 MODIFY email VARCHAR(255) AFTER last_name;
 ```
 
+**Examples**
+
+```sql
+ALTER TABLE Student
+ADD email VARCHAR(40);
+SELECT * FROM Student;
+
+ALTER TABLE Student
+MODIFY email VARCHAR(40) AFTER name;
+SELECT * FROM Student;
+
+USE Schema1;
+ALTER TABLE Student
+MODIFY email INT(40);
+SELECT * FROM Student;
+
+ALTER TABLE Student
+ADD UNIQUE(email);
+
+ALTER TABLE Student
+CHANGE email Email_ID VARCHAR(40);
+SELECT * FROM Student;
+
+ALTER TABLE Student
+DROP COLUMN Email_ID;
+SELECT * FROM Student;
+
+ALTER TABLE Student
+RENAME Student1;
+
+ALTER TABLE Student1
+RENAME Student;
+```
+
+<h2>MySQL DROP, TRUNCATE, and DELETE</h2>
+
+- **DROP**: Completely removes a table or database from the database system, Rollback is not possible in DROP. Syntax - `DROP TABLE table_name;`
+- **TRUNCATE**: Removes all rows from a table while keeping the table structure intact, Rollback is not possible in truncate. Syntax - `TRUNCATE TABLE table_name;` or `TRUNCATE table_name;`
+- **DELETE**: Delete a record from table, When where clause is not specified, then all record will be deleted from the table, Rollback is possible in delete. Syntax - `DELETE FROM Employee WHERE e_id=3;`
+
+```sql
+DROP TABLE table_name;
+TRUNCATE TABLE table_name;
+```
+
+<h2>What is Index</h2>
 
