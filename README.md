@@ -1141,5 +1141,5 @@ SELECT RAND(),RAND()*100,CEIL(7+RAND()*6); --0.34415738316640015, 8.72050571136
 
 SELECT SIGN(-2),SIGN(0),SIGN(2); -- -1, 0, 1
 ```
-
+![3](https://github.com/user-attachments/assets/811467ab-0a2e-4a0f-9b17-22612e40701f)
 
