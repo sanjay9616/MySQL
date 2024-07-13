@@ -1115,3 +1115,7 @@ CASE id 
     WHEN 3 THEN 60 
 END WHERE id IN(3,4);
 ```
+![1](https://github.com/user-attachments/assets/47f43dd5-b605-4065-a2aa-fb549e1bc722)
+![2](https://github.com/user-attachments/assets/602fb081-5594-4070-8d02-1ed5ff123bb2)
+
+
