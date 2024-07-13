@@ -1118,4 +1118,28 @@ END WHERE id IN(3,4);
 ![1](https://github.com/user-attachments/assets/47f43dd5-b605-4065-a2aa-fb549e1bc722)
 ![2](https://github.com/user-attachments/assets/602fb081-5594-4070-8d02-1ed5ff123bb2)
 
+```sql
+SELECT 4+3; -- 7
+SELECT 4+3 AS Total; -- 7
+
+USE Schema1;
+SELECT name,percentage,(5+percentage) FROM Result;
+
+SELECT PI(); -- 3.141593
+
+SELECT ROUND(9.48),ROUND(9.5),ROUND(9.6); -- 9, 10, 10
+
+SELECT ROUND(-9.48),ROUND(-9.5),ROUND(-9.6); -- -9, -10, -10
+
+SELECT CEIL(9.48),CEIL(9.5),CEIL(9.6),CEIL(-9.6),CEIL(-9.6),CEIL(-9.6); -- 10, 10, 10, -9, -9, -9
+
+SELECT FLOOR(9.48),FLOOR(9.5),FLOOR(9.6),FLOOR(-9.6),FLOOR(-9.6),FLOOR(-9.6); --9, 9, 9, -10, -10, -10
+
+SELECT POW(2,3),SQRT(17),SQRT(16); -- 8, 4.12310565617661, 4
+
+SELECT RAND(),RAND()*100,CEIL(7+RAND()*6); --0.34415738316640015, 8.720505711362236, 10
+
+SELECT SIGN(-2),SIGN(0),SIGN(2); -- -1, 0, 1
+```
+
 
