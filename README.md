@@ -1143,3 +1143,53 @@ SELECT SIGN(-2),SIGN(0),SIGN(2); -- -1, 0, 1
 ```
 ![3](https://github.com/user-attachments/assets/811467ab-0a2e-4a0f-9b17-22612e40701f)
 
+```sql
+USE Schema1;
+SELECT id, UPPER(name) AS Name, percentage FROM Result;
+```
+```sql
+USE Schema1;
+SELECT id, name, LENGTH(name) AS ByteLength, CHAR_LENGTH(name) AS Length FROM Result;
+
+SELECT id,CONCAT(name," - ",percentage,"%") AS Name FROM Result;
+
+SELECT CONCAT_WS(" - ","ABES","ENGINEERING","COLLEGE");
+
+SELECT LTRIM("   Sanjay Kumar          ") AS Name1,RTRIM("        Sanjay Kumar     ") AS Name2,TRIM("     Sanjay Kumar      ") as Name3;
+```
+- LTRIM:-Remove all left spaces
+- RTRIM:-Remove all Right spaces
+- TRIM:-Remove left and right spaces
+
+```sql
+SELECT POSITION("Kumar" IN "Sanjay Kumar") as Pos1,POSITION("a" IN "Sanjay Kumar") as Pos2;
+
+SELECT INSTR("Sanjay Kumar","KUmar") as Pos1,INSTR("Sanjay Kumar","a") as Pos2;
+
+SELECT LOCATE("Kumar","Sanjay Kumar") as Pos1,LOCATE("a","Sanjay Kumar",3) as Pos2;
+
+SELECT SUBSTRING("Sanjay Kumar",3) AS Name1,SUBSTRING("Sanjay Kumar",3,6) AS Name2,SUBSTRING("Sanjay Kumar",-5,5) AS Nmae3;
+
+-- SUBSTRING(String,Start,Length)  ---SUBSTRING is same as SUBSTR and MID
+
+SELECT SUBSTRING_INDEX("www.yahoobaba.net",".",2);
+
+SELECT LEFT("Sanjay Kumar",5) AS First5,RIGHT("Sanjay Kumar",5) AS Last5;
+
+SELECT RPAD("Sanjay Kumar",20,"*"),LPAD("Sanjay Kumar",20,"-");
+
+SELECT REVERSE("Sanjay Kumar"),REPLACE("Sanjay Kumar","a"," ");
+
+SELECT STRCMP("Sanjay Kumar","sanjay kumar"),STRCMP("Sanjay Kumar","sanjay"),STRCMP("Sanjay","sanjay kumar");
+
+-- right>left then 1
+-- right<left then -1
+-- right==left then 0
+
+SELECT FIELD("ram","Sanjay","Ram","Shivank") AS Find1,FIND_IN_SET("ram","Sanjay,Ram,Shivank") AS Find2;
+
+SELECT FORMAT(123.4567,2) AS Value1,FORMAT(123.4567,3) AS Value2;
+
+SELECT HEX("Sanjay Kumar"),HEX(10),HEX(15);
+```
+
